@@ -14,85 +14,86 @@ public class Notificacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID_Notificacao;
-    
-    private String Titulo;
-    private String Mensagem;
-    private LocalDateTime Hora;
-    private Boolean Lido;
+    private Long idNotificacao; // lowercase
+
+    private String titulo;
+    private String mensagem;
+    private LocalDateTime hora;
+    private Boolean lido;
+
     @ManyToOne
-    @JoinColumn(name = "ID_Calendario") 
-    private Calendario usuario_ID_Calendario;
+    @JoinColumn(name = "ID_Calendario")
+    private Calendario usuarioCalendario;
+
     @ManyToOne
-    @JoinColumn(name = "ID_Usuario") 
-    private Usuario ID_Usuario;
+    @JoinColumn(name = "ID_Usuario")
+    private Usuario usuario;
 
     public Notificacao() {}
 
-    public Notificacao(String Titulo, String Mensagem, LocalDateTime Hora, Boolean Lido, Calendario usuario_ID_Calendario, Usuario ID_Usuario) {
-        this.Titulo = Titulo;
-        this.Mensagem = Mensagem;
-        this.Hora = Hora;
-        this.Lido = Lido;
-        this.usuario_ID_Calendario = usuario_ID_Calendario;
-        this.ID_Usuario = ID_Usuario;
+    public Notificacao(String titulo, String mensagem, LocalDateTime hora, Boolean lido, Calendario usuarioCalendario, Usuario usuario) {
+        this.titulo = titulo;
+        this.mensagem = mensagem;
+        this.hora = hora;
+        this.lido = lido;
+        this.usuarioCalendario = usuarioCalendario;
+        this.usuario = usuario;
     }
 
-
-    // Getters e Setters
-    public Long getID_Notificacao() {
-        return ID_Notificacao;
+    // Getters and Setters
+    public Long getIdNotificacao() {
+        return idNotificacao;
     }
 
-    public void setID_Notificacao(Long ID_Notificacao) {
-        this.ID_Notificacao = ID_Notificacao;
+    public void setIdNotificacao(Long idNotificacao) {
+        this.idNotificacao = idNotificacao;
     }
 
     public String getTitulo() {
-        return Titulo;
+        return titulo;
     }
 
-    public void setTitulo(String Titulo) {
-        this.Titulo = Titulo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getMensagem() {
-        return Mensagem;
+        return mensagem;
     }
 
-    public void setMensagem(String Mensagem) {
-        this.Mensagem = Mensagem;
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     public LocalDateTime getHora() {
-        return Hora;
+        return hora;
     }
 
-    public void setHora(LocalDateTime Hora) {
-        this.Hora = Hora;
+    public void setHora(LocalDateTime hora) {
+        this.hora = hora;
     }
 
     public Boolean getLido() {
-        return Lido;
+        return lido;
     }
 
-    public void setLido(Boolean Lido) {
-        this.Lido = Lido;
+    public void setLido(Boolean lido) {
+        this.lido = lido;
     }
 
-    public Calendario getUsuario_ID_Calendario() {
-        return usuario_ID_Calendario;
+    public Calendario getUsuarioCalendario() {
+        return usuarioCalendario;
     }
 
-    public void setUsuario_ID_Calendario(Calendario usuario_ID_Calendario) {
-        this.usuario_ID_Calendario = usuario_ID_Calendario;
+    public void setUsuarioCalendario(Calendario usuarioCalendario) {
+        this.usuarioCalendario = usuarioCalendario;
     }
 
-    public Usuario getID_Usuario() {
-        return ID_Usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setID_Usuario(Usuario ID_Usuario) {
-        this.ID_Usuario = ID_Usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

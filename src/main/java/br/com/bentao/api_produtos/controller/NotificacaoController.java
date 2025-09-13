@@ -11,40 +11,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bentao.api_produtos.model.Calendario;
-import br.com.bentao.api_produtos.repository.CalendarioRepository;
+import br.com.bentao.api_produtos.model.Notificacao;
+import br.com.bentao.api_produtos.repository.NotificacaoRepository;
 
 @RestController
-@RequestMapping("/Calendario")
-public class CalendarioController {
+@RequestMapping("/notificacoes")
+public class NotificacaoController {
+    private final NotificacaoRepository repository;
 
-    private final CalendarioRepository repository;
-
-    public CalendarioController(CalendarioRepository repository) {
+    public NotificacaoController(NotificacaoRepository repository) {
         this.repository = repository;
     }
 
     @PostMapping
-    public Calendario criar(@RequestBody Calendario calendario) {
-        return repository.save(calendario);
+    public Notificacao criar(@RequestBody Notificacao notificacao) {
+        return repository.save(notificacao);
     }
 
     @GetMapping
-    public List<Calendario> listar() {
+    public List<Notificacao> listar() {
         return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Calendario buscar(@PathVariable Long id) {
+    public Notificacao buscar(@PathVariable Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
-    public Calendario atualizar(@PathVariable Long id, @RequestBody Calendario novoCalendario) {
-        return repository.findById(id).map(calendario -> {
-            calendario.setNome(novoCalendario.getNome());
-            calendario.setPreco(novoCalendario.getPreco());
-            return repository.save(calendario);
+    public Notificacao atualizar(@PathVariable Long id, @RequestBody Notificacao novaNotificacao) {
+        return repository.findById(id).map(notificacao -> {
+            notificacao.setTitulo(novaNotificacao.getTitulo());
+            notificacao.setMensagem(novaNotificacao.getMensagem());
+            notificacao.setHora(novaNotificacao.getHora());
+            notificacao.setLido(novaNotificacao.getLido());
+            notificacao.setUsuarioCalendario(novaNotificacao.getUsuarioCalendario());
+            notificacao.setUsuario(novaNotificacao.getUsuario());
+            return repository.save(notificacao);
         }).orElse(null);
     }
 
@@ -52,7 +55,6 @@ public class CalendarioController {
     public void excluir(@PathVariable Long id) {
         repository.deleteById(id);
     }
-
 }
 
 

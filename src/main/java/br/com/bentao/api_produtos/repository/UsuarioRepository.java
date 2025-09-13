@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.bentao.api_produtos.model.Calendario;
+import br.com.bentao.api_produtos.model.Usuario;
 
-public interface CalendarioRepository extends JpaRepository<Calendario, Long> {
-    List<Calendario> findByTest(String test);
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    List<Usuario> findByTest(String test);
 }
